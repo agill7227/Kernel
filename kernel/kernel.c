@@ -78,30 +78,42 @@ static void terminal_putchar(char c){
     }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-void kernel_main(void) {
-    terminal_initialize();
+static void terminal_writestring(const char* data){
+    for(size_t i = 0; data[i] != '\0'; i++){
+        terminal_putchar(data[i]);
+    }
 }
+
+void kernel_main(void){
+    terminal_initialize();
+    terminal_writestring("Welcomn to my kernel!\n");
+    terminal_setcolor(vga_entry_color(VGA_COLOR_GREEN, VGA_COLOR_BLACK));
+    terminal_writestring("Successfully booted into protected mode.\n");
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
